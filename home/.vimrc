@@ -1,12 +1,12 @@
 set nocompatible              " be iMproved
 filetype off                  " required!
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
+Bundle 'gmarik/Vundle.vim'
 
 " My bundles here:
 Bundle 'The-NERD-tree'
@@ -119,7 +119,7 @@ Bundle 'wting/rust.vim'
 Bundle 'fatih/vim-go'
 
 " ...
-
+call vundle#end()
 filetype plugin indent on     " required!
 "
 " Brief help
