@@ -84,7 +84,7 @@ inoremap <expr><C-e>  neocomplete#cancel_popup()
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
@@ -149,6 +149,13 @@ set number
 " setup some keybindings
 let mapleader = "\\"
 nmap <leader>n :NERDTreeToggle<cr>
+
+" spell checking
+autocmd FileType tex,markdown,gitcommit setlocal spell spelllang=en_us
+nmap <leader>s :setlocal spell spelllang=en_us<cr>
+
+" disable neocompletion for some filetypes
+autocmd FileType tex,markdown,gitcommit NeoCompleteLock
 
 " Make sure filetype and syntax are on
 filetype on
