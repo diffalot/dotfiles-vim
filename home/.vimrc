@@ -13,12 +13,26 @@ Bundle 'The-NERD-tree'
 Bundle 'The-NERD-Commenter'
 Bundle 'editorconfig-vim'
 Bundle 'tpope/vim-fugitive'
+Bundle 'gregsexton/gitv'
 
 " Fancy Syntax and Completion
+Bundle 'scrooloose/syntastic'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_javascript_checkers = ['standard']
+
 Bundle 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgrey
+
 Bundle 'Raimondi/delimitMate'
 
 Bundle 'Shougo/neocomplete.vim'
