@@ -26,7 +26,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-let g:syntastic_javascript_checkers = ['standard']
+let g:syntastic_javascript_checkers = ['jshint']
 
 Bundle 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_auto_colors = 0
@@ -122,6 +122,9 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 Bundle "pangloss/vim-javascript"
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'marijnh/tern_for_vim'
+
+" Ruby
+Bundle 'avakhov/vim-yaml'
 
 " Colorschemes
 "Bundle 'altercation/vim-colors-solarized'
