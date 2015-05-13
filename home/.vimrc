@@ -14,6 +14,7 @@ Bundle 'The-NERD-Commenter'
 Bundle 'editorconfig-vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'gregsexton/gitv'
+Bundle 'Tabular'
 
 " Fancy Syntax and Completion
 Bundle 'scrooloose/syntastic'
