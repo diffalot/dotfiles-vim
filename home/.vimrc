@@ -9,12 +9,23 @@ call vundle#begin()
 Bundle 'gmarik/Vundle.vim'
 
 " My bundles here:
-Bundle 'The-NERD-tree'
-Bundle 'The-NERD-Commenter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdcommenter'
 Bundle 'editorconfig-vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'gregsexton/gitv'
 Bundle 'Tabular'
+Bundle 'itchyny/lightline.vim'
+Bundle 'ryanoasis/vim-webdevicons'
+
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'component': {
+      \   'readonly': '%{&readonly?"":""}',
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
+      \ }
 
 " Fancy Syntax and Completion
 Bundle 'scrooloose/syntastic'
