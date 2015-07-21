@@ -95,7 +95,7 @@ inoremap <expr><C-e>  neocomplete#cancel_popup()
 "inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
 "inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
 " Or set this.
-"let g:neocomplete#enable_cursor_hold_i = 1
+let g:neocomplete#enable_cursor_hold_i = 1
 " Or set this.
 "let g:neocomplete#enable_insert_char_pre = 1
 
@@ -110,10 +110,8 @@ inoremap <expr><C-e>  neocomplete#cancel_popup()
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
@@ -135,13 +133,15 @@ Bundle "pangloss/vim-javascript"
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'marijnh/tern_for_vim'
 
+" CSS
+Bundle 'csscomb/vim-csscomb'
+" Map bc to run CSScomb. bc stands for beautify css
+autocmd FileType css noremap <buffer> <leader>bc :CSScomb<CR>
+" Automatically comb your CSS on save
+autocmd BufWritePre,FileWritePre *.css,*.less,*.scss,*.sass silent! :CSScomb<CR>
+
 " Ruby
 Bundle 'avakhov/vim-yaml'
-
-" Colorschemes
-"Bundle 'altercation/vim-colors-solarized'
-"Bundle 'goatslacker/mango.vim'
-Bundle 'xoria256.vim'
 
 " Testing?
 Bundle 'wting/rust.vim'
@@ -190,10 +190,19 @@ autocmd FileType tex,markdown,gitcommit NeoCompleteLock
 filetype on
 syntax on
 
+" Colorschemes
+"Bundle 'altercation/vim-colors-solarized'
+"Bundle 'goatslacker/mango.vim'
+Bundle 'xoria256.vim'
+Bundle 'wombat256.vim'
+Bundle 'jonathanfilip/vim-lucius'
+Bundle 'vim-scripts/Color-Scheme-Explorer'
+
 " Use Solarized colors by default
 set t_Co=256
 "set background=dark
 "colorscheme solarized
-colorscheme xoria256
+colorscheme lucius
+LuciusDarkHighContrast
 
 " indent guide colors
