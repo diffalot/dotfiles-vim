@@ -202,7 +202,7 @@ autocmd FileType tex,markdown,gitcommit setlocal spell spelllang=en_us
 nmap <leader>s :setlocal spell spelllang=en_us<cr>
 
 " disable neocompletion for some filetypes
-autocmd FileType tex,markdown,gitcommit NeoCompleteLock
+autocmd FileType html,tex,markdown,gitcommit NeoCompleteLock
 
 " Make sure filetype and syntax are on
 filetype on
