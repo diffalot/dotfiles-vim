@@ -6,12 +6,12 @@ call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/Vundle.vim'
+Bundle 'VundleVim/Vundle.vim'
 
 " My bundles here:
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'editorconfig-vim'
+Bundle 'editorconfig/editorconfig-vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'gregsexton/gitv'
 Bundle 'Tabular'
@@ -53,7 +53,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_scss_checkers = ['scss_lint']
 
 Bundle 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_auto_colors = 0
@@ -208,6 +209,12 @@ autocmd FileType html,tex,markdown,gitcommit NeoCompleteLock
 filetype on
 syntax on
 
+" insure saves will trigger webpack rebuild
+set backupcopy=yes
+
+" Highlight lines past length recommendation
+let &colorcolumn="80,".join(range(120,999),",")
+
 " Colorschemes
 "Bundle 'altercation/vim-colors-solarized'
 "Bundle 'goatslacker/mango.vim'
@@ -222,5 +229,3 @@ set t_Co=256
 "colorscheme solarized
 colorscheme lucius
 LuciusDarkHighContrast
-
-" indent guide colors
