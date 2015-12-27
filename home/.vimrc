@@ -163,7 +163,7 @@ autocmd BufWritePre,FileWritePre *.css,*.less,*.scss,*.sass silent! :CSScomb<CR>
 Bundle 'avakhov/vim-yaml'
 
 " Testing?
-Bundle 'wting/rust.vim'
+Bundle 'rust-lang/rust.vim'
 Bundle 'fatih/vim-go'
 
 " ...
