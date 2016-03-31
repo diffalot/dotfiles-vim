@@ -27,6 +27,7 @@ Bundle 'gregsexton/gitv'
 Bundle 'Tabular'
 Bundle 'itchyny/lightline.vim'
 Bundle 'ryanoasis/vim-webdevicons'
+Bundle 'yegappan/grep'
 
 let g:lightline = {
       \ 'colorscheme': 'wombat',
