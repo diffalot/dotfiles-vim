@@ -47,6 +47,7 @@ let g:lightline = {
 Plug 'w0rp/ale'
 let g:ale_fixers = {
       \   'javascript': ['eslint'],
+      \   'vue': ['eslint'],
       \}
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
@@ -72,9 +73,12 @@ Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'marijnh/tern_for_vim'
 
+" vue
+Plug 'posva/vim-vue'
+
 " Prettier
-Plug 'sbdchd/neoformat'
-autocmd BufWritePre *.js Neoformat
+"Plug 'sbdchd/neoformat'
+"autocmd BufWritePre *.js Neoformat
 
 " CSS
 Plug 'csscomb/vim-csscomb'
