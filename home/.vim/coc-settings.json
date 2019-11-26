@@ -1,0 +1,16 @@
+{
+	"css.enable": true,
+	"html.enable": true,
+	"json.enable": true,
+	"css.validate": true,
+	"tsserver.log": "verbose",
+	"tsserver.enable": true,
+	"tsserver.formatOnType": false,
+	"eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact", "typescript.tsx"],
+	"eslint.autoFixOnSave": true,
+	"coc.preferences.bracketEnterImprove": true,
+	"coc.preferences.enableFloatHighlight": true,
+	"coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "typescriptreact", "json", "javascriptreact", "typescript.tsx", "css", "html", "xml"],
+	"coc.preferences.snippets.enable": true,
+	"coc.preferences.previewAutoClose": true
+}
