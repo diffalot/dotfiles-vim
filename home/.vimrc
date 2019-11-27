@@ -14,8 +14,6 @@ Plug 'roxma/nvim-yarp'
 Plug 'neoclide/coc.nvim', {'tag': '*'}
 let g:coc_global_extensions = ['coc-eslint', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', ]
 
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
-
 set nobackup
 set nowritebackup
 set cmdheight=2
@@ -92,12 +90,32 @@ let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+      \             [ 'fugitive', 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component': {
+      \   'readonly': '%{&readonly?"":""}',
+      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+      \   'fugitive': '%{exists("*fugitive#head")?" ".fugitive#head():""}'
       \ },
       \ 'component_function': {
+      \   'filename': 'LightlineFilename',
       \   'cocstatus': 'coc#status'
       \ },
+      \ 'component_visible_condition': {
+      \   'readonly': '(&filetype!="help"&& &readonly)',
+      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
       \ }
+
+function! LightlineFilename()
+  return &filetype ==# 'vimfiler' ? vimfiler#get_status_string() :
+        \ &filetype ==# 'unite' ? unite#get_status_string() :
+        \ &filetype ==# 'vimshell' ? vimshell#get_status_string() :
+        \ expand('%') !=# '' ? expand('%') : '[No Name]'
+endfunction
 
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
@@ -135,14 +153,18 @@ Plug 'vim-airline/vim-airline-themes'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_statusline_ontop=0
 au VimEnter * AirlineTheme bubblegum
+let g:airline_powerline_fonts = 1
 
 
 "------------------------ EDITOR ------------------------
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
 Plug 'mattn/emmet-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'Raimondi/delimitMate'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'ryanoasis/vim-webdevicons'
 
 
 "------------------------ NERD COMMENTER ------------------------
@@ -159,6 +181,7 @@ let g:NERDToggleCheckAllLines = 1
 
 "------------------------ NERD TREE ------------------------
 Plug 'scrooloose/nerdtree'
+nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>nt :NERDTree<CR>
 nnoremap <Leader>ntf :NERDTreeFocus<CR>
 nnoremap <Leader>1 :NERDTreeFocus<CR>
@@ -166,10 +189,6 @@ nnoremap <Leader>ntr :NERDTreeRefreshRoot<CR>
 au StdinReadPre * let s:std_in=1
 au VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
-
-"------------------------ VIMWIKI ------------------------
-Plug 'vimwiki/vimwiki'
-let g:vimwiki_list = [{'path': '~/workspace/wiki',  'syntax': 'markdown', 'ext': '.md'}]
 
 "------------------------ AUTO SAVE ------------------------
 Plug '907th/vim-auto-save'
@@ -218,7 +237,7 @@ let &t_EI.="\e[2 q" "EI = NORMAL mode (ELSE)
 
 " code folding
 set foldmethod=syntax
-set foldlevelstart=1
+set nofoldenable
 
 set spelllang=en
 
@@ -268,6 +287,8 @@ syntax on
 " colorscheme pink-moon
 " colorscheme one
 set background=dark
+colorscheme lucius
+" LuciusDarkHighContrast
 
 " set paste is removed because it disable the coc autocompletion
 " no format when pasting
@@ -489,7 +510,3 @@ map <F6> :setlocal spell! spelllang=en_us<CR>
 " 
 " call plug#end()
 
-set t_Co=256
-colorscheme lucius
-LuciusDarkHighContrast
-"colorscheme xoria256
