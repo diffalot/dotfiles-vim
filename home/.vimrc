@@ -147,6 +147,11 @@ nmap <Leader>fzb <Esc>:Buffers<CR>
 nmap <Leader>fzc <Esc>:Commits<CR>
 
 
+"------------------------ Command T ------------------------
+Plug 'wincent/command-t', {
+    \   'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
+    \ }
+
 "------------------------ AIRLINE ------------------------
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -228,7 +233,7 @@ call plug#end()
 
 " ================================ VIM DEFAULT CONF ================================ 
 set number
-set relativenumber
+"set relativenumber
 
 " cursor
 let &t_SI.="\e[6 q" "SI = INSERT mode
