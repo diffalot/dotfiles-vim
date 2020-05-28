@@ -147,6 +147,14 @@ nmap <Leader>fzb <Esc>:Buffers<CR>
 nmap <Leader>fzc <Esc>:Commits<CR>
 
 
+"------------------------ ag/ack ------------------------
+Plug 'mileszs/ack.vim'
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+nmap <C-S-A> :Ack<space>
+imap <C-S-A> <Esc>:Ack<space>
+
 "------------------------ Command T ------------------------
 Plug 'wincent/command-t', {
     \   'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
@@ -214,6 +222,17 @@ let g:auto_save_events = ["InsertLeave", "TextChanged"]
 " Plug 'vim-scripts/vimspell'
 " Plug 'sts10/vim-pink-moon'
 Plug 'jonathanfilip/vim-lucius'
+
+" ================================ SICP Racket Lisp ================================ 
+autocmd filetype lisp,scheme,art setlocal equalprg=scmindent.rkt
+Plug 'vim-scripts/paredit.vim'
+Plug 'amdt/vim-niji'
+Plug 'sjl/tslime.vim'
+let g:tslime_ensure_trailing_newlines = 1
+let g:tslime_normal_mapping = '<leader>t'
+let g:tslime_visual_mapping = '<leader>t'
+let g:tslime_vars_mapping = '<leader>T'
+" ================================ SICP Racket Lisp END `================================ 
 
 call plug#end()
 " ================================ VIMPLUG END ================================
@@ -304,7 +323,6 @@ set fillchars+=vert:\|
 
 
 " ================================ VIM DEFAULT CONF END ================================ 
-
 
 
 
