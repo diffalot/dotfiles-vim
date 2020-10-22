@@ -11,7 +11,7 @@ Plug 'roxma/nvim-yarp'
 
 
 "------------------------ COC ------------------------
-Plug 'neoclide/coc.nvim', {'tag': '*'}
+Plug 'neoclide/coc.nvim',{'branch': 'release'}
 let g:coc_global_extensions = ['coc-eslint', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', ]
 
 set nobackup
@@ -126,10 +126,12 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
+" TeX
+Plug 'lervag/vimtex'
+let g:tex_flavor = 'latex'
 
 "------------------------ VIM TSX ------------------------
 Plug 'ianks/vim-tsx'
-
 
 "------------------------ VIM TSX ------------------------
 Plug 'leafgarland/typescript-vim'
