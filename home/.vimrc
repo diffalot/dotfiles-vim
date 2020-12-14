@@ -368,28 +368,6 @@ map <F6> :setlocal spell! spelllang=en_us<CR>
 " ================================ KEY BINDS END ================================ 
 
 
-"
-" set nocompatible              " be iMproved
-" filetype off                  " required!
-" 
-" if has("multi_byte")
-"   if &termencoding == ""
-"     let &termencoding = &encoding
-"   endif
-"   set encoding=utf-8
-"   setglobal fileencoding=utf-8
-"   "setglobal bomb
-"   set fileencodings=ucs-bom,utf-8,latin1
-" endif
-" 
-" " Yank and paste with the system clipboard
-" set clipboard=unnamed
-" 
-" " Hides buffers instead of closing them
-" set hidden
-" 
-" call plug#begin()
-" 
 " " My bundles here:
 " Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Plug 'scrooloose/nerdcommenter'
@@ -400,67 +378,6 @@ map <F6> :setlocal spell! spelllang=en_us<CR>
 " Plug 'itchyny/lightline.vim'
 " Plug 'ryanoasis/vim-webdevicons'
 " Plug 'yegappan/grep'
-" 
-" let g:lightline = {
-"       \ 'colorscheme': 'wombat',
-"       \ 'active': {
-"       \   'left': [ [ 'mode', 'paste' ],
-"       \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
-"       \ },
-"       \ 'component': {
-"       \   'readonly': '%{&readonly?"":""}',
-"       \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-"       \   'fugitive': '%{exists("*fugitive#head")?" ".fugitive#head():""}'
-"       \ },
-"       \ 'component_function': {
-"       \   'filename': 'LightlineFilename',
-"       \ },
-"       \ 'component_visible_condition': {
-"       \   'readonly': '(&filetype!="help"&& &readonly)',
-"       \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
-"       \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
-"       \ },
-"       \ 'separator': { 'left': '', 'right': '' },
-"       \ 'subseparator': { 'left': '', 'right': '' }
-"       \ }
-" 
-" function! LightlineFilename()
-"   return &filetype ==# 'vimfiler' ? vimfiler#get_status_string() :
-"         \ &filetype ==# 'unite' ? unite#get_status_string() :
-"         \ &filetype ==# 'vimshell' ? vimshell#get_status_string() :
-"         \ expand('%') !=# '' ? expand('%') : '[No Name]'
-" endfunction
-" 
-" 
-" "------------------------ COC ------------------------
-" " coc for tslinting, auto complete and prettier
-" Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-" " coc extensions
-" let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
-" "------------------------ VIM TSX ------------------------
-" " by default, if you open tsx file, neovim does not show syntax colors
-" " vim-tsx will do all the coloring for jsx in the .tsx file
-" Plug 'ianks/vim-tsx'
-" "------------------------ VIM TSX ------------------------
-" " by default, if you open tsx file, neovim does not show syntax colors
-" " typescript-vim will do all the coloring for typescript keywords
-" Plug 'leafgarland/typescript-vim'
-" " == VIMPLUG END ================================
-" " == AUTOCMD ================================ 
-" " by default .ts file are not identified as typescript and .tsx files are not
-" " identified as typescript react file, so add following
-" au BufNewFile,BufRead *.ts setlocal filetype=typescript
-" au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
-" " == AUTOCMD END ================================
-" "
-" "
-" "Plug 'w0rp/ale'
-" "let g:ale_fixers = {
-" "      \   'javascript': ['eslint'],
-" "      \   'vue': ['eslint'],
-" "      \}
-" "let g:ale_fix_on_save = 1
-" "let g:ale_completion_enabled = 1
 " 
 " Plug 'nathanaelkane/vim-indent-guides'
 " let g:indent_guides_auto_colors = 0
@@ -505,24 +422,10 @@ map <F6> :setlocal spell! spelllang=en_us<CR>
 " Plug 'fatih/vim-go'
 " 
 " 
-" " use temp directories in ~.vim/tmp
-" set backupdir=~/.vim/tmp
-" set directory=~/.vim/tmp
-" 
-" " Use the mouse and set it up for tmux/screen
-" set mouse=a
-" if &term =~ '^screen'
-"     " tmux knows the extended mouse mode
-"     set ttymouse=xterm2
-" endif
-" 
 " " i like special characters
 " set list listchars=tab:»\ ,eol:¶,nbsp:¬
 " set number
 " 
-" " setup some keybindings
-" let mapleader = "\\"
-" nmap <leader>n :NERDTreeToggle<cr>
 " 
 " " spell checking
 " autocmd FileType tex,markdown,gitcommit setlocal spell spelllang=en_us
@@ -536,6 +439,4 @@ map <F6> :setlocal spell! spelllang=en_us<CR>
 " 
 " " Colorschemes
 " Plug 'vim-scripts/xoria256.vim'
-" 
-" call plug#end()
 
