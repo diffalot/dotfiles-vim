@@ -128,10 +128,12 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
+" TeX
+Plug 'lervag/vimtex'
+let g:tex_flavor = 'latex'
 
 "------------------------ VIM TSX ------------------------
 Plug 'ianks/vim-tsx'
-
 
 "------------------------ VIM TSX ------------------------
 Plug 'leafgarland/typescript-vim'
