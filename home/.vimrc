@@ -134,6 +134,8 @@ Plug 'ianks/vim-tsx'
 "------------------------ VIM TSX ------------------------
 Plug 'leafgarland/typescript-vim'
 
+" -- MDX --
+Plug 'jxnblk/vim-mdx-js'
 
 "------------------------ FZF ------------------------
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
