@@ -11,8 +11,10 @@ Plug 'roxma/nvim-yarp'
 
 
 "------------------------ COC ------------------------
-Plug 'neoclide/coc.nvim', {'tag': '*'}
-let g:coc_global_extensions = ['coc-eslint', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', ]
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = ['coc-eslint', 'coc-prettier', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', ]
+
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 set nobackup
 set nowritebackup
