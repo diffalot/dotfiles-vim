@@ -1,3 +1,7 @@
+" You're gonna want to debug this eventually :]
+"set rtp+=~/path/to/minivimrc
+"source ~/path/to/minivimrc/vimrc
+
 set shell=/bin/sh
 set t_Co=256
 
@@ -25,41 +29,64 @@ set signcolumn=yes
 set nobackup
 set nowritebackup
 
-" Web
-" Typescript
-Plug 'leafgarland/typescript-vim'
-Plug 'ianks/vim-tsx'
+" The Fancy Shit
+Plug 'vim-scripts/SyntaxComplete'
 
-" MDX
-Plug 'jxnblk/vim-mdx-js'
-
-" Styled Components
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-
-" Aspirational
-" Polyglot
+" Polyglot to so at least everything is highlighted
 Plug 'sheerun/vim-polyglot'
 
-" Rust
-Plug 'rust-lang/rust.vim'
+" Javascript
+" apparently these are passe
+"Plug 'pangloss/vim-javascript'
+"Plug 'leafgarland/typescript-vim'
+"Plug 'ianks/vim-tsx'
 
-" LaTeX
+" This one is very expensive
+Plug 'ternjs/tern'
+
+" Apparently this is the recommended shit, according to https://github.com/MaxMEllon/vim-jsx-pretty
+Plug 'yuezk/vim-js'
+Plug 'othree/yajs.vim'
+Plug 'othree/es.next.syntax.vim'
+
+Plug 'othree/javascript-libraries-syntax.vim'
+let g:used_javascript_libs = 'jquery,react,underscore,jasmine,chai,handlebars,vue,d3,tape'
+
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'HerringtonDarkholme/yats.vim'
+
+Plug 'elzr/vim-json'
+Plug 'jxnblk/vim-mdx-js'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+
+" Python
+Plug 'jmcantrell/vim-virtualenv'
+Plug 'vim-python/python-syntax'
+let g:python_highlight_all = 1
+
+" Documentation
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 Plug 'lervag/vimtex'
+
+" Aspirational and Things that I Might actually use or learn
+Plug 'rust-lang/rust.vim'
+Plug 'elixir-editors/vim-elixir'
+
+" tmux assistance
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'tmux-plugins/vim-tmux'
+Plug 'tpope/vim-obsession'
 
 " Useful plugins
 Plug 'editorconfig/editorconfig-vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate'
-
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
-" tmux assistance
-Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'tmux-plugins/vim-tmux'
-
-" Visual
+" Visual Setup
 
 set fillchars+=vert:\|
 " Highlight lines past length recommendation
@@ -77,10 +104,11 @@ Plug 'amdt/vim-niji'
 Plug 'ryanoasis/vim-webdevicons'
 
 " themes
-Plug 'Lokaltog/vim-distinguished'
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'dikiaap/minimalist'
 Plug 'jonathanfilip/vim-lucius'
 Plug 'chriskempson/base16-vim'
+Plug 'Lokaltog/vim-distinguished'
 
 " Airline
 Plug 'vim-airline/vim-airline'
@@ -88,12 +116,11 @@ Plug 'vim-airline/vim-airline-themes'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_statusline_ontop=0
 let g:airline_powerline_fonts = 1
-let g:airline_theme='distinguished'
 
 " Spell Checking
 Plug 'kamykn/spelunker.vim'
 set nospell
-let g:enable_spelunker_vim = 1
+let g:enable_spelunker_vim = 0
 let g:spelunker_check_type = 2 " only check words visible in the buffer
 
 "------------------------ FZF ------------------------
@@ -149,108 +176,27 @@ let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
 
-
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-"" Use deoplete if you don't want do use CoC
-"if has('nvim')
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"else
-"  Plug 'Shougo/deoplete.nvim'
-"  Plug 'roxma/nvim-yarp'
-"  Plug 'roxma/vim-hug-neovim-rpc'
-"endif
-"let g:deoplete#enable_at_startup = 1
-
 call plug#end()
+
+" LIGHT Theme
+set background=light
+colorscheme PaperColor
+"let g:airline_theme='papercolor'
+let g:airline_theme='silver'
+
+
+" DARK Theme
+" set background=dark
+"let g:airline_theme='distinguished'
+
+"colorscheme minimalist
+" colorscheme lucius
+" LuciusDarkHighContrast
+
+" colorscheme distinguished
 
 "" Base 16 Shell integration
 "if filereadable(expand("~/.vimrc_background"))
 "    let base16colorspace=256
 "    source ~/.vimrc_background
 "endif
-
-" colorscheme lucius
-" LuciusDarkHighContrast
-" set background=dark
-" colorscheme distinguished
-colorscheme minimalist
-
-" coc configuration
-let g:coc_global_extensions = ['coc-eslint', 'coc-prettier', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', ]
-
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
-"
-"" inoremap <silent><expr> <TAB>
-""       \ pumvisible() ? "\<C-n>" :
-""       \ <SID>check_back_space() ? "\<TAB>" :
-""       \ coc#refresh()
-"" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-"
-"inoremap <silent><expr> <C-j>
-"      \ pumvisible() ? "\<C-n>" :
-"      \ <SID>check_back_space() ? "\<TAB>" :
-"      \ coc#refresh()
-"inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<C-h>"
-"
-"function! s:check_back_space() abort
-"  let col = col('.') - 1
-"  return !col || getline('.')[col - 1]  =~# '\s'
-"endfunction
-"
-"inoremap <silent><expr> <c-space> coc#refresh()
-"inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-"nmap <silent> [c <Plug>(coc-diagnostic-prev)
-"nmap <silent> ]c <Plug>(coc-diagnostic-next)
-"
-"" Remap keys for gotos
-"nmap <silent> gd <Plug>(coc-definition)
-"nmap <silent> gy <Plug>(coc-type-definition)
-"nmap <silent> gi <Plug>(coc-implementation)
-"nmap <silent> gr <Plug>(coc-references)
-"
-"" Use K to show documentation in preview window
-"nnoremap <silent> K :call <SID>show_documentation()<CR>
-"
-"function! s:show_documentation()
-"  if (index(['vim','help'], &filetype) >= 0)
-"    execute 'h '.expand('<cword>')
-"  else
-"    call CocAction('doHover')
-"  endif
-"endfunction
-"
-"" Highlight symbol under cursor on CursorHold
-"autocmd CursorHold * silent call CocActionAsync('highlight')
-"
-"" Remap for rename current word
-"nmap <leader>rn <Plug>(coc-rename)
-"
-"" Remap for format selected region
-"xmap <leader>f  <Plug>(coc-format-selected)
-"nmap <leader>f  <Plug>(coc-format-selected)
-"
-"augroup mygroup
-"  autocmd!
-"  " Setup formatexpr specified filetype(s).
-"  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-"  " Update signature help on jump placeholder
-"  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-"augroup end
-"
-"xmap <leader>a  <Plug>(coc-codeaction-selected)
-"nmap <leader>a  <Plug>(coc-codeaction-selected)
-"nmap <leader>ac  <Plug>(coc-codeaction)
-"nmap <leader>qf  <Plug>(coc-fix-current)
-"
-"command! -nargs=0 Format :call CocAction('format')
-"command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-"
-"nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-"nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-"nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-"nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-"nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-"nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-"nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-"nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
