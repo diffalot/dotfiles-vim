@@ -29,6 +29,8 @@ set signcolumn=yes
 set nobackup
 set nowritebackup
 
+set nohlsearch
+
 " The Fancy Shit
 Plug 'vim-scripts/SyntaxComplete'
 
@@ -65,9 +67,9 @@ Plug 'vim-python/python-syntax'
 let g:python_highlight_all = 1
 
 " Documentation
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
 Plug 'lervag/vimtex'
+Plug 'plasticboy/vim-markdown'
+let g:vim_markdown_folding_disabled = 1
 
 " Aspirational and Things that I Might actually use or learn
 Plug 'rust-lang/rust.vim'
@@ -83,8 +85,24 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate'
-Plug 'tpope/vim-fugitive'
+Plug 'godlygeek/tabular'
 Plug 'airblade/vim-gitgutter'
+Plug 'lukelbd/vim-tabline'
+
+" Linting and Formatting
+" post install (yarn install | npm install) then load plugin only for editing supported files
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
+
+Plug 'dense-analysis/ale'
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\   'css': ['prettier'],
+\}
+let g:ale_linters_explicit = 1
+let g:ale_fix_on_save = 1
+
 
 " Visual Setup
 
@@ -204,7 +222,7 @@ function GoLight()
 endfunction
 
 " set the background by the time of day
-if strftime("%H") < 19 && strftime("%H") > 7
+if strftime("%H") < 19 && strftime("%H") > 5
   :call GoLight()
 else
   :call GoDark()
