@@ -107,8 +107,8 @@ Plug 'ryanoasis/vim-webdevicons'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'dikiaap/minimalist'
 Plug 'jonathanfilip/vim-lucius'
-Plug 'chriskempson/base16-vim'
 Plug 'Lokaltog/vim-distinguished'
+"Plug 'chriskempson/base16-vim'
 
 " Airline
 Plug 'vim-airline/vim-airline'
@@ -178,22 +178,46 @@ let g:NERDToggleCheckAllLines = 1
 
 call plug#end()
 
-" LIGHT Theme
-set background=light
-colorscheme PaperColor
-"let g:airline_theme='papercolor'
-let g:airline_theme='silver'
 
+function GoDark()
+  set background=dark
+  let g:background='dark'
+  let g:airline_theme='distinguished'
+  colorscheme PaperColor
+  "colorscheme lucius
+  "LuciusBlack
+  "LuciusDark
+  "LuciusDarkHighContrast
+  "colorscheme minimalist
+  "colorscheme distinguished
+endfunction
 
-" DARK Theme
-" set background=dark
-"let g:airline_theme='distinguished'
+function GoLight()
+  set background=light
+  let g:background='light'
+  let g:airline_theme='papercolor'
+  "colorscheme PaperColor
+  colorscheme lucius
+  LuciusLightHighContrast
+  "colorscheme minimalist
+  "colorscheme distinguished
+endfunction
 
-"colorscheme minimalist
-" colorscheme lucius
-" LuciusDarkHighContrast
+" set the background by the time of day
+if strftime("%H") < 19
+  :call GoLight()
+else
+  :call GoDark()
+endif
 
-" colorscheme distinguished
+" toggle dark and light modes
+function! Lightswitch()
+  if (&background == 'dark')
+    :call GoLight()
+  else
+    :call GoDark()
+  endif
+endfunction
 
 "" Base 16 Shell integration
 "if filereadable(expand("~/.vimrc_background"))
