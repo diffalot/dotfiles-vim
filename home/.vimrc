@@ -204,7 +204,7 @@ function GoLight()
 endfunction
 
 " set the background by the time of day
-if strftime("%H") < 19
+if strftime("%H") < 19 && strftime("%H") > 7
   :call GoLight()
 else
   :call GoDark()
