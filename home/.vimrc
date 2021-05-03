@@ -1,11 +1,8 @@
-" You're gonna want to debug this eventually :]
-"set rtp+=~/path/to/minivimrc
-"source ~/path/to/minivimrc/vimrc
-
 set shell=/bin/sh
 set t_Co=256
 
 set nocompatible
+
 call plug#begin('~/.vim/plugged')
 
 let mapleader = "\\"
@@ -36,15 +33,6 @@ Plug 'vim-scripts/SyntaxComplete'
 
 " Polyglot to so at least everything is highlighted
 Plug 'sheerun/vim-polyglot'
-
-" Javascript
-" apparently these are passe
-"Plug 'pangloss/vim-javascript'
-"Plug 'leafgarland/typescript-vim'
-"Plug 'ianks/vim-tsx'
-
-" This one is very expensive
-Plug 'ternjs/tern'
 
 " Apparently this is the recommended shit, according to https://github.com/MaxMEllon/vim-jsx-pretty
 Plug 'yuezk/vim-js'
@@ -89,6 +77,8 @@ Plug 'godlygeek/tabular'
 Plug 'airblade/vim-gitgutter'
 Plug 'lukelbd/vim-tabline'
 
+" IDE
+
 " Linting and Formatting
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
@@ -102,55 +92,6 @@ let g:ale_fixers = {
 \}
 let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
-
-
-" Visual Setup
-
-set fillchars+=vert:\|
-" Highlight lines past length recommendation
-let &colorcolumn="80,".join(range(120,999),",")
-
-" i like special characters
-" but it's too much with carraige returns
-set list listchars=tab:»\ ,nbsp:¬
-"set list listchars=tab:»\ ,eol:¶,nbsp:¬
-
-" rainbow brackets
-Plug 'amdt/vim-niji'
-
-" fancy icons
-Plug 'ryanoasis/vim-webdevicons'
-
-" themes
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'dikiaap/minimalist'
-Plug 'jonathanfilip/vim-lucius'
-Plug 'Lokaltog/vim-distinguished'
-"Plug 'chriskempson/base16-vim'
-
-" Airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_statusline_ontop=0
-let g:airline_powerline_fonts = 1
-
-" Spell Checking
-Plug 'kamykn/spelunker.vim'
-set nospell
-let g:enable_spelunker_vim = 0
-let g:spelunker_check_type = 2 " only check words visible in the buffer
-
-"------------------------ FZF ------------------------
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-" ignore files and folders in git ignore
-command! FZFGitIgnore call fzf#run(fzf#wrap({'source': 'git ls-files --exclude-standard --others --cached'}))
-nmap <C-p> :FZFGitIgnore <CR>
-imap <C-p> <Esc>:FZFGitIgnore <CR>
-nmap <Leader>fzl <Esc>:Lines<CR>
-nmap <Leader>fzb <Esc>:Buffers<CR>
-nmap <Leader>fzc <Esc>:Commits<CR>
 
 
 "------------------------ ag/ack ------------------------
@@ -194,8 +135,49 @@ let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
 
+" Visual Setup
+
+set fillchars+=vert:\|
+" Highlight lines past length recommendation
+let &colorcolumn="80,".join(range(90,999),",")
+
+" i like special characters
+" but it's too much with carraige returns
+set list listchars=tab:»\ ,nbsp:¬
+"set list listchars=tab:»\ ,eol:¶,nbsp:¬
+
+" rainbow brackets
+Plug 'amdt/vim-niji'
+
+" fancy icons
+Plug 'ryanoasis/vim-webdevicons'
+
+" themes
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'dikiaap/minimalist'
+Plug 'jonathanfilip/vim-lucius'
+Plug 'Lokaltog/vim-distinguished'
+"Plug 'chriskempson/base16-vim'
+
+" Airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_statusline_ontop=0
+let g:airline_powerline_fonts = 1
+
+" Spell Checking
+Plug 'kamykn/spelunker.vim'
+set nospell
+let g:enable_spelunker_vim = 0
+let g:spelunker_check_type = 2 " only check words visible in the buffer
+
 call plug#end()
 
+"set showbreak=â€¦
+set wrap linebreak nolist
+command! -nargs=* Wrap set wrap linebreak nolist
+command! -nargs=* Unwrap set wrap! linebreak! nolist!
 
 function GoDark()
   set background=dark
@@ -236,6 +218,9 @@ function! Lightswitch()
     :call GoDark()
   endif
 endfunction
+
+command! -nargs=* LightsOff call GoDark()
+command! -nargs=* LightsOn call GoLight()
 
 "" Base 16 Shell integration
 "if filereadable(expand("~/.vimrc_background"))
