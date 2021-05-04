@@ -227,3 +227,30 @@ command! -nargs=* LightsOn call GoLight()
 "    let base16colorspace=256
 "    source ~/.vimrc_background
 "endif
+"
+"
+"
+"
+"
+""//	/*
+""//	"languageserver": {
+""//		"sql": {
+""//			"command": "sql-language-server",
+""//			"args" : ["up", "--method", "stdio"],
+""//			"filetypes": ["sql", "mysql"]
+""//		}
+""//	},
+""//*/
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
