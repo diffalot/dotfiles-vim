@@ -114,8 +114,8 @@ Plug 'Lokaltog/vim-distinguished'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_statusline_ontop=0
 let g:airline_powerline_fonts = 1
+"let g:airline_statusline_ontop=0
 
 " Spell Checking
 Plug 'kamykn/spelunker.vim'
@@ -178,46 +178,50 @@ let g:NERDToggleCheckAllLines = 1
 
 call plug#end()
 
+set background=dark
 
-function GoDark()
-  set background=dark
-  let g:background='dark'
-  let g:airline_theme='distinguished'
-  colorscheme PaperColor
-  "colorscheme lucius
-  "LuciusBlack
-  "LuciusDark
-  "LuciusDarkHighContrast
-  "colorscheme minimalist
-  "colorscheme distinguished
-endfunction
+colorscheme delek
+let g:airline_theme='badwolf'
 
-function GoLight()
-  set background=light
-  let g:background='light'
-  let g:airline_theme='papercolor'
-  "colorscheme PaperColor
-  colorscheme lucius
-  LuciusLightHighContrast
-  "colorscheme minimalist
-  "colorscheme distinguished
-endfunction
+"function GoDark()
+"  set background=dark
+"  let g:background='dark'
+"  let g:airline_theme='distinguished'
+"  colorscheme PaperColor
+"  "colorscheme lucius
+"  "LuciusBlack
+"  "LuciusDark
+"  "LuciusDarkHighContrast
+"  "colorscheme minimalist
+"  "colorscheme distinguished
+"endfunction
+"
+"function GoLight()
+"  set background=light
+"  let g:background='light'
+"  let g:airline_theme='papercolor'
+"  "colorscheme PaperColor
+"  colorscheme lucius
+"  LuciusLightHighContrast
+"  "colorscheme minimalist
+"  "colorscheme distinguished
+"endfunction
+"
+"" set the background by the time of day
+"if strftime("%H") < 19 && strftime("%H") > 7
+"  :call GoLight()
+"else
+"  :call GoDark()
+"endif
 
-" set the background by the time of day
-if strftime("%H") < 19 && strftime("%H") > 7
-  :call GoLight()
-else
-  :call GoDark()
-endif
-
-" toggle dark and light modes
-function! Lightswitch()
-  if (&background == 'dark')
-    :call GoLight()
-  else
-    :call GoDark()
-  endif
-endfunction
+"" toggle dark and light modes
+"function! Lightswitch()
+"  if (&background == 'dark')
+"    :call GoLight()
+"  else
+"    :call GoDark()
+"  endif
+"endfunction
 
 "" Base 16 Shell integration
 "if filereadable(expand("~/.vimrc_background"))
